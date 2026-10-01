@@ -17,6 +17,12 @@ Flamengo, Palmeiras, Corinthians, São Paulo, Santos, Grêmio, Internacional, At
 
 A cada 10 rivais superados o jogo grita **GOOOOL!** e fica mais rápido. Seu recorde é salvo por time em `recordes.json`. O jogo tem efeitos sonoros de pulo, colisão e gol (sintetizados, em `sons/`).
 
+## Baixar e jogar (Windows, sem instalar nada)
+
+Baixe o executável na página de [Releases](https://github.com/LucasPolidev/flappy-brasileirao/releases) e rode o `FlappyBrasileirao.exe`.
+
+> ⚠️ O Windows SmartScreen vai avisar que é "um aplicativo não reconhecido" — isso é esperado, pois o executável não tem certificado de assinatura digital (pago e não compensa pra um projeto hobby). Clique em **"Mais informações"** → **"Executar assim mesmo"** para abrir o jogo normalmente.
+
 ## Requisitos
 
 - Python 3.8+ (recomendado: **3.12**, já que o pygame ainda não publica wheels para o 3.14)
