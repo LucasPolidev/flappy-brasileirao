@@ -4,3 +4,4 @@ recordes.json
 build/
 dist/
 *.spec
+.vscode/

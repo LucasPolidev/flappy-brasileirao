@@ -79,7 +79,13 @@ TIMES = [
     {"nome": "Botafogo",      "sigla": "BOT", "listras": [PRETO_T, BRANCO, PRETO_T, BRANCO, PRETO_T], "texto": AMARELO},
     {"nome": "Vasco",         "sigla": "VAS", "listras": [PRETO_T, BRANCO, PRETO_T], "texto": VERMELHO},
     {"nome": "Bahia",         "sigla": "BAH", "listras": [AZUL, VERMELHO, BRANCO, VERMELHO, AZUL], "texto": BRANCO},
-    {"nome": "Fortaleza",     "sigla": "FOR", "listras": [VERMELHO, BRANCO, AZUL, BRANCO, VERMELHO], "texto": BRANCO},
+    {"nome": "Athletico-PR",  "sigla": "CAP", "listras": [PRETO_T, VERMELHO, VERMELHO, VERMELHO, PRETO_T], "texto": BRANCO},
+    {"nome": "Chapecoense",   "sigla": "CHA", "listras": [VERDE, VERDE, VERDE, BRANCO], "texto": BRANCO},
+    {"nome": "Coritiba",      "sigla": "CTB", "listras": [VERDE, BRANCO, VERDE, BRANCO], "texto": PRETO},
+    {"nome": "Mirassol",      "sigla": "MIR", "listras": [AMARELO, AMARELO, VERDE, AMARELO, AMARELO], "texto": PRETO},
+    {"nome": "Remo",          "sigla": "REM", "listras": [AZUL, AZUL, GRENA, AZUL, AZUL], "texto": BRANCO},
+    {"nome": "Red Bull Bragantino", "sigla": "RBB", "listras": [BRANCO, BRANCO, VERMELHO, BRANCO, BRANCO], "texto": VERMELHO},
+    {"nome": "Vitória",       "sigla": "VIT", "listras": [PRETO_T, VERMELHO, PRETO_T, VERMELHO, PRETO_T], "texto": BRANCO},
 ]
 
 

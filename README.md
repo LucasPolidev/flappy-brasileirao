@@ -2,11 +2,11 @@
 
 Um "Flappy Bird" com os times do Campeonato Brasileiro, feito em Python com [pygame](https://www.pygame.org/).
 
-Escolha seu time entre os 14 clubes disponíveis e voe entre as traves dos rivais, marcando pontos a cada time que você supera!
+Escolha seu time entre os 20 clubes da Série A e voe entre as traves dos rivais, marcando pontos a cada time que você supera!
 
 ## Times disponíveis
 
-Flamengo, Palmeiras, Corinthians, São Paulo, Santos, Grêmio, Internacional, Atlético-MG, Cruzeiro, Fluminense, Botafogo, Vasco, Bahia e Fortaleza — cada um com as cores e listras do seu escudo.
+Flamengo, Palmeiras, Corinthians, São Paulo, Santos, Grêmio, Internacional, Atlético-MG, Cruzeiro, Fluminense, Botafogo, Vasco, Bahia, Athletico-PR, Chapecoense, Coritiba, Mirassol, Remo, Red Bull Bragantino e Vitória — cada um com as cores e listras do seu escudo.
 
 ## Como jogar
 
