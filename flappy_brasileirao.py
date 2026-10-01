@@ -34,7 +34,20 @@ LARGURA_CANO = 70
 ESPACO_CANO = 165          # abertura entre o cano de cima e o de baixo
 DISTANCIA_CANOS = 220      # distância horizontal entre pares de canos
 
-ARQUIVO_RECORDE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "recordes.json")
+def pasta_executavel():
+    """Pasta do .exe quando empacotado (pyinstaller), ou do script em modo normal."""
+    if getattr(sys, "frozen", False):
+        return os.path.dirname(sys.executable)
+    return os.path.dirname(os.path.abspath(__file__))
+
+
+def caminho_recurso(*partes):
+    """Pasta dos assets (sons, imagens): extraída pelo pyinstaller em modo --onefile."""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, *partes)
+
+
+ARQUIVO_RECORDE = os.path.join(pasta_executavel(), "recordes.json")
 
 BRANCO = (255, 255, 255)
 PRETO = (20, 20, 20)
@@ -218,6 +231,7 @@ class Jogo:
         pygame.display.set_caption("Flappy Brasileirão")
         self.tela = pygame.display.set_mode((LARGURA, ALTURA))
         self.relogio = pygame.time.Clock()
+        self.sons = self._carregar_sons()
 
         self.fonte_gigante = pygame.font.SysFont("arial", 64, bold=True)
         self.fonte_grande = pygame.font.SysFont("arial", 40, bold=True)
@@ -235,6 +249,20 @@ class Jogo:
         self.mensagem_timer = 0
 
     # ----- preparação -----------------------------------------------------
+    def _carregar_sons(self):
+        sons = {}
+        try:
+            for nome in ("pulo", "colisao", "gol"):
+                sons[nome] = pygame.mixer.Sound(caminho_recurso("sons", f"{nome}.wav"))
+        except pygame.error:
+            pass  # sem placa de som / mixer indisponível: jogo continua mudo
+        return sons
+
+    def tocar(self, nome):
+        som = self.sons.get(nome)
+        if som:
+            som.play()
+
     def _gerar_torcida(self):
         """Pontinhos coloridos simulando a arquibancada."""
         pontos = []
@@ -299,12 +327,14 @@ class Jogo:
                     self.estado = "jogando"
                     self.novo_cano(LARGURA + 40)
                     self.jogador.pular()
+                    self.tocar("pulo")
                 elif ev.type == pygame.KEYDOWN and ev.key == pygame.K_ESCAPE:
                     self.estado = "menu"
 
             elif self.estado == "jogando":
                 if acao:
                     self.jogador.pular()
+                    self.tocar("pulo")
                 elif ev.type == pygame.KEYDOWN and ev.key == pygame.K_p:
                     self.estado = "pausado"
                 elif ev.type == pygame.KEYDOWN and ev.key == pygame.K_ESCAPE:
@@ -352,6 +382,7 @@ class Jogo:
                     self.mensagem = "GOOOOL!"
                     self.mensagem_timer = 80
                     self.velocidade += 0.25   # fica mais difícil
+                    self.tocar("gol")
 
         self.canos = [c for c in self.canos if c.x + LARGURA_CANO + 10 > 0]
         if not self.canos or self.canos[-1].x < LARGURA - DISTANCIA_CANOS:
@@ -369,6 +400,7 @@ class Jogo:
     def fim_de_jogo(self):
         self.estado = "fim"
         self.tick_fim = self.tick
+        self.tocar("colisao")
         nome = self.time["nome"]
         self.novo_recorde = self.pontos > self.recordes.get(nome, 0)
         if self.novo_recorde:

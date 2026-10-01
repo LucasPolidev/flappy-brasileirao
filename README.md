@@ -15,7 +15,7 @@ Flamengo, Palmeiras, Corinthians, São Paulo, Santos, Grêmio, Internacional, At
 | Menu  | `←`/`→` (ou `A`/`D`) escolhe o time · `ENTER`/`ESPAÇO` começa |
 | Jogo  | `ESPAÇO`, `↑` ou clique para voar · `P` pausa · `ESC` volta ao menu |
 
-A cada 10 rivais superados o jogo grita **GOOOOL!** e fica mais rápido. Seu recorde é salvo por time em `recordes.json`.
+A cada 10 rivais superados o jogo grita **GOOOOL!** e fica mais rápido. Seu recorde é salvo por time em `recordes.json`. O jogo tem efeitos sonoros de pulo, colisão e gol (sintetizados, em `sons/`).
 
 ## Requisitos
 
@@ -36,7 +36,19 @@ py -3.12 -m pip install pygame
 py -3.12 flappy_brasileirao.py
 ```
 
+## Gerar um executável (.exe)
+
+Pra jogar sem precisar instalar Python/pygame, dá pra empacotar com [PyInstaller](https://pyinstaller.org/):
+
+```bash
+pip install pyinstaller
+pyinstaller --onefile --windowed --name "FlappyBrasileirao" --add-data "sons;sons" flappy_brasileirao.py
+```
+
+O executável fica em `dist/FlappyBrasileirao.exe`.
+
 ## Estrutura
 
 - `flappy_brasileirao.py` — todo o jogo (menu, física, colisão, desenho)
+- `sons/` — efeitos sonoros (pulo, colisão, gol)
 - `recordes.json` — recordes salvos automaticamente por time (gerado ao jogar)
